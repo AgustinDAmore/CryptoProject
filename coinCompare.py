@@ -4,10 +4,10 @@ import tkinter as tk
 from webbrowser import open
 import cryptocompare as cc
 import time
-from conversor import Convert 
+from convert import Convert 
 
 
-class App(tk.Tk):
+class CoinCompare(tk.Tk):
     def __init__(self):
         self.contadorFin = time.time()
         self.contadorInicio = time.time()
@@ -126,6 +126,6 @@ class App(tk.Tk):
         self.coin = coin
 
 # Main
-app = App()
-app.mainloop()
+#app = CoinCompare()
+#app.mainloop()
 
