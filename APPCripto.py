@@ -4,16 +4,16 @@ import tkinter as tk
 from webbrowser import open
 import cryptocompare as cc
 import time
-from conversor import Conversor 
+from conversor import Convert 
 
 
 class App(tk.Tk):
     def __init__(self):
         self.contadorFin = time.time()
         self.contadorInicio = time.time()
-        self.precio = 0
+        self.price = 0
         self.coin = ''
-        self.diferencia = 0
+        self.difference = 0
 
         super().__init__()
         self.title('Coin Compare')
@@ -52,15 +52,14 @@ class App(tk.Tk):
         self.price_entry = tk.Label(self.main_frame, text='0', fg='black')
         self.price_entry.grid(row=4, column=1)
 
-        # mostar fecha y hora actual en la ventana actualiza cada segundo
-        self.fecha_actual = tk.Label(self.main_frame, text='Fecha actual:')
+        self.fecha_actual = tk.Label(self.main_frame, text='Current date:')
         self.fecha_actual.grid(row=0, column=0)
 
         fecha = time.strftime('%Y-%m-%d %H:%M:%S')
         self.time_label = tk.Label(self.main_frame, text=fecha)
         self.time_label.grid(row=0, column=1, columnspan=2)
         self.after(1000, self.update_time)
-        # incrementar contador cada segundo
+
         self.contador = tk.Label(self.main_frame, text="")
         self.contador.grid(row=5, column=0, columnspan=2)
         self.after(1000, self.update_contador)
@@ -82,14 +81,14 @@ class App(tk.Tk):
         self.coin_button = tk.Button(self.main_frame,text="information", command=lambda: open(f'https://www.google.com/search?q={self.coin}'), width=10)
         self.coin_button.grid(row=6, column=3, columnspan=2)
 
-        self.convert_button = tk.Button(self.main_frame,text="convert",command=Conversor, width=10)
+        self.convert_button = tk.Button(self.main_frame,text="convert",command=Convert, width=10)
         self.convert_button.grid(row=7, column=3, columnspan=2)
 
-        self.diferencia_label = tk.Label(self.main_frame, text="diferencia: ")
-        self.diferencia_label.grid(row=6, column=0, columnspan=2)
+        self.difference_label = tk.Label(self.main_frame, text="difference: ")
+        self.difference_label.grid(row=6, column=0, columnspan=2)
 
-        self.valor_diferencia = tk.Label(self.main_frame, text=self.diferencia)
-        self.valor_diferencia.grid(row=6, column=1, columnspan=2)
+        self.different_value = tk.Label(self.main_frame, text=self.difference)
+        self.different_value.grid(row=6, column=1, columnspan=2)
         self.mainloop()
 
     def update_time(self):
@@ -107,21 +106,21 @@ class App(tk.Tk):
         currency = self.currency_entry.get()
         price = cc.get_price(coin, currency)
         price = price[coin.upper()][currency.upper()]
-        if self.precio > price:
+        if self.price > price:
             color = 'red'
         else:
             color = 'green'
 
-        self.diferencia = round(price-self.precio,2)
-        if self.diferencia == price:
-            self.diferencia = 0
+        self.difference = round(price-self.price,2)
+        if self.difference == price:
+            self.difference = 0
 
         if self.coin != coin:
-            self.diferencia = 0
+            self.difference = 0
 
-        self.valor_diferencia.config(text="$"+str(self.diferencia), fg=color)
+        self.different_value.config(text="$"+str(self.difference), fg=color)
 
-        self.precio=price
+        self.price=price
         self.price_entry.config(text=price, fg=color)
         self.time_price.config(text=time.strftime('%Y-%m-%d %H:%M:%S'))
         self.coin = coin

@@ -4,7 +4,7 @@ import cryptocompare as cc
 import time
 
 
-class Conversor(tk.Tk):
+class Convert(tk.Tk):
     def __init__(self):
 
         super().__init__()
@@ -65,6 +65,6 @@ class Conversor(tk.Tk):
 
 
 # Main
-#conver = Conversor()
+#conver = convert()
 #conver.mainloop()
 
