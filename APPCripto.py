@@ -4,7 +4,7 @@ import tkinter as tk
 from webbrowser import open
 import cryptocompare as cc
 import time
-from conversor import Conversor
+from conversor import Conversor 
 
 
 class App(tk.Tk):
