@@ -1,8 +1,8 @@
 from cgitb import text
 import tkinter as tk
 import cryptocompare as cc
+from PIL import Image,ImageTk
 import time
-
 
 class Convert(tk.Tk):
     def __init__(self):
@@ -37,7 +37,7 @@ class Convert(tk.Tk):
         self.amount_currency_entry = tk.Entry(self.main_frame, width=10, justify='center')
         self.amount_currency_entry.grid(row=2, column=3)
 
-        self.button = tk.Button(self.main_frame, text='Convert', command=self.convert, width=10)
+        self.button = tk.Button(self.main_frame,text="Convert", command=self.convert)
         self.button.grid(row=3, column=1, columnspan=2)
 
         self.ecuacion_label = tk.Label(self.main_frame, text=self.ecuacion)
@@ -65,6 +65,5 @@ class Convert(tk.Tk):
 
 
 # Main
-#conver = convert()
-#conver.mainloop()
-
+if __name__ == '__main__':
+    Convert()
