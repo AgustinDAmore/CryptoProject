@@ -31,14 +31,10 @@ class CoinCompare(tk.Tk):
         self.currency_label = tk.Label(self.main_frame, text='Currency: ')
         self.currency_label.grid(row=2, column=0)
 #####################################################################################################
-        inputtext = Image.open('inputtext.png')
-        inputtext = inputtext.resize((30, 30), Image.ANTIALIAS) # Redimension (Alto, Ancho)
-        inputtext = ImageTk.PhotoImage(inputtext)
-
-        self.coin_entry = tk.Entry(self.main_frame,image=inputtext, width=10, justify='center')
+        self.coin_entry = tk.Entry(self.main_frame, width=10, justify='center')
         self.coin_entry.grid(row=1, column=1)
 
-        self.currency_entry = tk.Entry(self.main_frame,image=inputtext, width=10, justify='center')
+        self.currency_entry = tk.Entry(self.main_frame, width=10, justify='center')
         self.currency_entry.grid(row=2, column=1)
 #####################################################################################################
 
